@@ -160,7 +160,7 @@ vinara/
 
 ## Try It
 
-Live app: [vinara-pi.vercel.app](https://vinara-pi.vercel.app)
+Live app: [vinara-pi.vercel.app](https://vinara-seven.vercel.app)
 
 Type in Vinara script, save notes, export as text or image, and transliterate between Latin and Vinara.
 
