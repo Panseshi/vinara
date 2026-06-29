@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Vinara</title>
+<meta name="description" content="Why Vinara was created — a writing system for Dhivehi and English">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <a href="../" class="wordmark">vi<span>n</span>ara</a>
+  <div class="header-right">
+    <a href="https://github.com/panseshi/vinara" target="_blank" class="btn" style="font-size: 13px;">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main class="editorial">
+
+  <a href="../" class="back-nav">
+    <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to home
+  </a>
+
+  <h1>One script. Two languages. No switching.</h1>
+  <p class="subtitle">A left-to-right writing system for Dhivehi and English.</p>
+
+  <h2>The Right-to-Left (RTL) Problem</h2>
+  <p>Only two scripts in the world are still written right-to-left in everyday digital use — Arabic and Thaana. Every app, every UI, every text editor is built for LTR. RTL is an afterthought at best.</p>
+  <p>The real pain point is mixing Thaana with any LTR text — English, numbers, links — which breaks completely:</p>
+  <ul>
+    <li>Letters jump to the wrong side of the screen</li>
+    <li>The cursor starts from the wrong end</li>
+    <li>Reading direction becomes ambiguous — which side do you start from?</li>
+    <li>Even trying to explain something in Thaana while typing in English causes text to fly around and reorder itself</li>
+  </ul>
+  <p>This is not a minor inconvenience. It makes Thaana practically unusable in any mixed-language digital context — which is almost every context for a bilingual Maldivian today.</p>
+
+  <div class="pull-quote">
+    "you don't have to switch to English to write a foreign name.<br>
+    but when you try to write it in Thaana, the whole line breaks."
+  </div>
+
+  <h2>The Vertical Space Problem</h2>
+  <p>Thaana uses diacritics for every vowel sound — written above and below the consonant. Arabic has the same system but Arabic speakers routinely omit diacritics in casual writing without confusion.</p>
+  <p>Dhivehi cannot do this. Removing diacritics creates ambiguity and difficulty for an already declining language with a shrinking speaker base. The diacritics are non-optional.</p>
+  <p>This means Thaana text takes significantly more vertical space than Latin text. In a UI with fixed line heights, Thaana gets clipped. In a chat interface it looks inconsistent. On mobile it is worse.</p>
+  <p>Vinara solves this by treating vowels as standalone characters — like English. No stacking, no diacritics, no vertical overflow. Text sits cleanly on a single line regardless of vowel content.</p>
+
+  <h2>The Missing Sounds</h2>
+  <p>Thaana cannot represent <strong>C, W, X, Q</strong> natively. But the bigger problem is that even "close enough" sounds in Thaana are not actually the same.</p>
+  <p>Take the English phrase <strong>"fun run"</strong>. In Dhivehi, the <strong>n</strong> sound is always nasal — like the <strong>n</strong> in "sing." There is no way to write a non-nasal English <strong>n</strong> in Thaana. So "fun run" becomes something closer to "fann rann" — which in Dhivehi means "palm tree leaf" and "gold." The meaning is completely lost.</p>
+  <p>The <strong>r</strong> sound is another mismatch. English <strong>r</strong> is postalveolar — the tongue curls back. Dhivehi <strong>r</strong> is alveolar — the tongue taps forward. A Dhivehi speaker reading "run" in Thaana will pronounce it with a rolled r, not an English r. The sound is close, but not the same.</p>
+  <p>And because English is <strong>orthographic</strong> — spelling is preserved, not sound — the same word can be read differently depending on accent. A Maldivian reading "car" in Thaana might say it with a rolled r. A British speaker might drop the r entirely. An American speaker might pronounce it with a hard r. The script cannot capture this because it was never designed for English phonetics.</p>
+  <p>Vinara adds C, W, X, Q as first-class characters. More importantly, it preserves English spelling as-is — so "fun run" is written exactly as it looks, and read exactly as each speaker's accent dictates. No approximation. No switching.</p>
+
+  <h2>Inspiration</h2>
+  <p>The Turkish script reform of 1928 showed that a writing system can be deliberately redesigned for practical and modern reasons. But the more direct inspiration was Japanese.</p>
+  <p>Japanese uses two parallel scripts — Hiragana for native words, Katakana for foreign loan words and sounds. Both are LTR. Both coexist in the same line without breaking the layout. A Maldivian seeing "コーヒーショップ" (coffee shop in Katakana) and understanding it immediately — that was the model.</p>
+  <p>The vowel extender character is also borrowed directly from Japanese — the long vowel mark <strong>ー</strong> which extends the preceding vowel sound. In Vinara, the same concept applies: a + extender = aa, i + extender = ee.</p>
+  <p>Several Vinara characters are directly inspired by Japanese and Chinese characters — chosen because they are visually distinct from each other, neat, and already familiar to the author who was studying both languages during the project.</p>
+
+  <h2>The Keyboard</h2>
+  <p>Vinara follows the same QWERTY layout Maldivian speakers already use to type Thaana. No new muscle memory required. The mapping is close enough that switching feels immediate.</p>
+
+  <div class="cta-block">
+    <p>Ready to try writing in Vinara?</p>
+    <a href="../app/" class="btn btn-primary">Open the Writing App</a>
+    <a href="../origins/" class="btn" style="margin-left: 8px;">See Version History</a>
+    <a href="https://github.com/panseshi/vinara" target="_blank" class="btn" style="margin-left: 8px;">View Source</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Created by <a href="https://github.com/panseshi">panseshi</a> &middot; <a href="../LICENSE">SIL OFL 1.1</a> &middot; v4
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var saved = localStorage.getItem('vinara_theme');
+  if (saved === 'light') document.documentElement.classList.add('light');
+})();
+</script>
+
+</body>
+</html>

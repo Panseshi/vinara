@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make Your Own — Vinara</title>
+<meta name="description" content="Fork the Vinara script and build your own version">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header>
+  <a href="../" class="wordmark">vi<span>n</span>ara</a>
+  <div class="header-right">
+    <a href="https://github.com/panseshi/vinara" target="_blank" class="btn" style="font-size: 13px;">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-right: 6px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<main class="editorial">
+
+  <a href="../" class="back-nav">
+    <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Back to home
+  </a>
+
+  <h1>Make Your Own</h1>
+  <p class="subtitle">Vinara is open source and designed to be forked. Redesign the characters, add new ones, or adapt it for a different language.</p>
+
+  <h2>What You Need</h2>
+  <ul>
+    <li><strong>Inkscape</strong> or <strong>Figma</strong> (free) — for designing vector glyphs</li>
+    <li><strong>FontForge</strong> (free) — for building the font file</li>
+    <li><strong>Basic understanding of bezier curves</strong> — for drawing clean outlines</li>
+  </ul>
+
+  <h2>Step 1 — Design Your Characters</h2>
+  <p>Start with the Vinara SVG files as a base, or draw from scratch. Each character should fit within a consistent bounding box. Here are the key consistency rules:</p>
+  <ul>
+    <li><strong>Stroke width:</strong> Keep all strokes the same weight for visual unity.</li>
+    <li><strong>X-height:</strong> Most characters should sit on the same baseline and reach the same height.</li>
+    <li><strong>Baseline:</strong> All characters align to the same bottom line.</li>
+    <li><strong>Spacing:</strong> Leave consistent side bearings so characters flow naturally when typed.</li>
+  </ul>
+  <p><strong>Figma workflow:</strong> Create one frame per character. Use the pen tool to draw outlines. Outline strokes before export (Outline Stroke &rarr; Flatten). Export each character as a clean SVG with no transforms.</p>
+
+  <h2>Step 2 — Build the Font</h2>
+  <p>Import your SVGs into FontForge:</p>
+  <ol>
+    <li>Open FontForge and create a new font.</li>
+    <li>For each character, select a glyph slot and import the SVG.</li>
+    <li><strong>Unicode mapping:</strong> Vinara uses the Latin letter slots (a-z, A-Z) so it works immediately in any text field. You can also use Private Use Area (PUA) codes like <code>E000</code>–<code>E021</code> if you prefer.</li>
+    <li><strong>Fix common issues:</strong>
+      <ul>
+        <li>Correct direction — ensure outlines are wound correctly</li>
+        <li>Remove overlap — merge overlapping paths</li>
+        <li>Add extrema — ensure curves have points at their extremes</li>
+        <li>Round to integer — snap coordinates to the grid</li>
+      </ul>
+    </li>
+    <li>Set metrics ( ascent, descent, em-size ) consistently.</li>
+    <li>Export as TTF.</li>
+  </ol>
+
+  <h2>Step 3 — Build the App</h2>
+  <p>Fork the Vinara app from GitHub and customize it:</p>
+  <ol>
+    <li>Replace the font file in <code>font/vinara.ttf</code> with your own.</li>
+    <li>Update the keyboard map in <code>js/mapping.js</code> if you added or changed characters.</li>
+    <li>Update the transliteration rules in <code>js/translit-engine.js</code> if your romanization differs.</li>
+    <li>Deploy on <strong>Vercel</strong> (free) by connecting your GitHub repo.</li>
+  </ol>
+
+  <p>Here is the basic font-face CSS you will need:</p>
+  <pre><code>@font-face {
+  font-family: 'YourFontName';
+  src: url('font/your-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}</code></pre>
+
+  <h2>Licensing</h2>
+  <p>Vinara is released under the <strong>SIL Open Font License 1.1</strong>. This means:</p>
+  <ul>
+    <li>You are free to use, study, modify, and redistribute the font.</li>
+    <li>You cannot sell the font by itself.</li>
+    <li>You cannot use the reserved font name "Vinara" for modified versions without permission.</li>
+    <li>Modified versions must be released under the same license.</li>
+  </ul>
+  <p>See the <a href="../LICENSE">LICENSE</a> file for the full text.</p>
+
+  <div class="cta-block">
+    <p>Ready to start?</p>
+    <a href="https://github.com/panseshi/vinara" target="_blank" class="btn btn-primary">Fork on GitHub</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  Created by <a href="https://github.com/panseshi">panseshi</a> &middot; <a href="../LICENSE">SIL OFL 1.1</a> &middot; v3
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var saved = localStorage.getItem('vinara_theme');
+  if (saved === 'light') document.documentElement.classList.add('light');
+})();
+</script>
+
+</body>
+</html>

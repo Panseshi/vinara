@@ -1,0 +1,90 @@
+{
+  "comment": "Vinara Script Mapping Data",
+  "version": "1.0",
+
+  "consonants": {
+    "h": { "vinara": "h", "thaana": "\u0780", "roman": "h" },
+    "S": { "vinara": "S", "thaana": "\u0781", "roman": "sh" },
+    "n": { "vinara": "n", "thaana": "\u0782", "roman": "n" },
+    "r": { "vinara": "r", "thaana": "\u0783", "roman": "r" },
+    "b": { "vinara": "b", "thaana": "\u0784", "roman": "b" },
+    "L": { "vinara": "L", "thaana": "\u0785", "roman": "lh" },
+    "k": { "vinara": "k", "thaana": "\u0786", "roman": "k" },
+    "W": { "vinara": "W", "thaana": "\u0787", "roman": "alifu" },
+    "v": { "vinara": "v", "thaana": "\u0788", "roman": "v" },
+    "m": { "vinara": "m", "thaana": "\u0789", "roman": "m" },
+    "f": { "vinara": "f", "thaana": "\u078A", "roman": "f" },
+    "D": { "vinara": "D", "thaana": "\u078B", "roman": "dh" },
+    "T": { "vinara": "T", "thaana": "\u078C", "roman": "th" },
+    "l": { "vinara": "l", "thaana": "\u078D", "roman": "l" },
+    "g": { "vinara": "g", "thaana": "\u078E", "roman": "g" },
+    "N": { "vinara": "N", "thaana": "\u078F", "roman": "gn" },
+    "s": { "vinara": "s", "thaana": "\u0790", "roman": "s" },
+    "d": { "vinara": "d", "thaana": "\u0791", "roman": "d" },
+    "z": { "vinara": "z", "thaana": "\u0792", "roman": "z" },
+    "t": { "vinara": "t", "thaana": "\u0793", "roman": "t" },
+    "y": { "vinara": "y", "thaana": "\u0794", "roman": "y" },
+    "p": { "vinara": "p", "thaana": "\u0795", "roman": "p" },
+    "j": { "vinara": "j", "thaana": "\u0796", "roman": "j" },
+    "C": { "vinara": "C", "thaana": "\u0797", "roman": "ch" },
+    "w": { "vinara": "w", "thaana": "", "roman": "w", "english": true },
+    "x": { "vinara": "x", "thaana": "", "roman": "x", "english": true },
+    "c": { "vinara": "c", "thaana": "", "roman": "c", "english": true },
+    "q": { "vinara": "q", "thaana": "", "roman": "q", "english": true }
+  },
+
+  "vowels": {
+    "a": { "vinara": "a", "thaana": "\u07A6", "roman": "a", "long": { "key": "aa", "vinara": "aX", "thaana": "\u07A7", "roman": "aa" } },
+    "i": { "vinara": "i", "thaana": "\u07A8", "roman": "i", "long": { "key": "ee", "vinara": "iX", "thaana": "\u07A9", "roman": "ee" } },
+    "u": { "vinara": "u", "thaana": "\u07AA", "roman": "u", "long": { "key": "oo", "vinara": "uX", "thaana": "\u07AB", "roman": "oo" } },
+    "e": { "vinara": "e", "thaana": "\u07AC", "roman": "e", "long": { "key": "ey", "vinara": "eX", "thaana": "\u07AD", "roman": "ey" } },
+    "o": { "vinara": "o", "thaana": "\u07AE", "roman": "o", "long": { "key": "oa", "vinara": "oX", "thaana": "\u07AF", "roman": "oa" } }
+  },
+
+  "dhivehiCompounds": {
+    "sh": "S",
+    "lh": "L",
+    "dh": "D",
+    "th": "T",
+    "gn": "N",
+    "ch": "C"
+  },
+
+  "customConvenienceRules": {
+    "comment": "Non-standard romanization shortcuts for user convenience",
+    "hh": { "vinara": "SQ", "thaana": "\u0781\u07B0", "description": "Explicit shaviyani sukun (ށް) — double h shortcut" }
+  },
+
+  "sukunConsonants": {
+    "h": "WQ",
+    "n": "nQ",
+    "s": "sQ",
+    "S": "SQ",
+    "T": "TQ",
+    "W": "WQ"
+  },
+  "sukunOutput": {
+    "S": "sh",
+    "n": "n",
+    "s": "s",
+    "T": "th",
+    "W": "h"
+  },
+
+  "compoundCollisions": [
+    { "first": "s", "second": "h", "output": "s'h" },
+    { "first": "D", "second": "h", "output": "d'h" },
+    { "first": "T", "second": "h", "output": "t'h" },
+    { "first": "l", "second": "h", "output": "l'h" },
+    { "first": "C", "second": "h", "output": "c'h" },
+    { "first": "g", "second": "n", "output": "g'n" }
+  ],
+
+  "englishKeys": ["w", "x", "c", "q"],
+  "vowelKeys": ["a", "e", "i", "o", "u"],
+  "longVowelKeys": ["A", "E", "I", "O", "U"],
+  "alifu": "W",
+  "extender": "X",
+  "sukun": "Q",
+  "halfNasalN": "n"
+}

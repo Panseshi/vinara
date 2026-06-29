@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Vinara — Write</title>
+<meta name="description" content="Vinara script note-taking & transliteration tool">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button class="hamburger" id="hamburgerBtn" title="Toggle sidebar">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../" class="wordmark">vi<span>n</span>ara</a>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="write">Write</button>
+    </div>
+
+    <div class="header-right">
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">
+        <svg viewBox="0 0 24 24" id="themeIcon" style="display:none;"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg viewBox="0 0 24 24" id="themeIconDark" style="display:block;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span class="theme-label">Theme</span>
+      </button>
+      <button class="icon-btn" id="shortcutsBtn" title="Keyboard shortcuts">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M6 16h.01M10 16h.01M14 16h.01M18 16h.01"/></svg>
+      </button>
+      <div class="font-dot" id="fontDot"></div>
+      <button class="btn" id="refBtn">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Reference
+      </button>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="sidebar-label">Notes</span>
+      </div>
+      <div class="sidebar-search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="Search notes…" spellcheck="false">
+      </div>
+      <div class="notes-list" id="notesList"></div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- WRITE PANEL -->
+      <div class="panel active" id="panel-write">
+        <div class="editor-toolbar">
+          <span class="editor-meta" id="editorMeta"></span>
+          <div class="input-mode-group" id="inputModeGroup">
+            <button class="input-mode-btn active" data-input="vinara">Vinara</button>
+            <button class="input-mode-btn" data-input="latin">Latin</button>
+          </div>
+          <div class="latin-sub-group" id="latinSubGroup" style="display:none;">
+            <button class="latin-sub-btn active" data-sub="dhivehi">Dhivehi</button>
+            <button class="latin-sub-btn" data-sub="english">English</button>
+          </div>
+          <div class="font-size-group" id="fontSizeGroup">
+            <button class="font-size-btn" data-size="32" title="Small">S</button>
+            <button class="font-size-btn active" data-size="48" title="Medium">M</button>
+            <button class="font-size-btn" data-size="72" title="Large">L</button>
+          </div>
+          <div class="editor-actions">
+            <button class="btn" id="newNoteBtn" title="New note">
+              <svg viewBox="0 0 24 24" style="width:14px; height:14px; vertical-align:middle; margin-right:4px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              New
+            </button>
+            <button class="btn" id="openVnrBtn">Open</button>
+            <button class="btn" id="exportBtn">Export as Image</button>
+          </div>
+        </div>
+        <div class="editor-wrap" id="noNote" style="display:flex; align-items:center; justify-content:center;">
+          <div style="text-align:center; color:var(--text-dim);">
+            <div style="font-size:36px; margin-bottom:8px; font-family:'Vinara',serif;">vinara</div>
+            <div style="font-size:13px;">Create a new note or open an existing one</div>
+          </div>
+        </div>
+        <div class="editor-wrap" id="editorView" style="display:none;">
+          <textarea id="editor" placeholder="Type your note…" spellcheck="false" class="vinara-font"></textarea>
+          <div id="latinView" style="display:none; flex-direction:column; flex:1;">
+            <textarea id="latinEditor" placeholder="type in latin…" spellcheck="false" class="latin-editor"></textarea>
+            <div class="vinara-preview-wrap">
+              <div class="vinara-preview-header">
+                <span class="vinara-preview-label">Vinara &#8595;</span>
+                <div class="vinara-preview-actions">
+                  <button class="btn" id="exportVinaraBtn">Export as Image</button>
+                  <button class="btn" id="sendToNoteBtn">Send to Note</button>
+                </div>
+              </div>
+              <div class="vinara-preview-content" id="vinaraPreviewContent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="file" id="vnrFileInput" accept=".vnr" style="display:none;">
+
+    </main>
+  </div>
+</div>
+
+<!-- SCRIPT REFERENCE DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-handle">
+    <div class="drawer-handle-bar"></div>
+    <span class="drawer-title">Reference</span>
+    <button class="icon-btn" id="closeDrawer">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</div>
+
+<!-- OFF-SCREEN CAPTURE TARGET -->
+<div id="capture-target"></div>
+
+<!-- SHORTCUTS MODAL -->
+<div class="modal-overlay" id="shortcutsOverlay">
+  <div class="modal">
+    <h3>Keyboard Shortcuts</h3>
+    <div class="shortcut-row"><span>Save note as .vnr</span><span class="key"><kbd>Ctrl</kbd> + <kbd>S</kbd></span></div>
+    <div class="shortcut-row"><span>Export as PNG</span><span class="key"><kbd>Ctrl</kbd> + <kbd>E</kbd></span></div>
+    <div class="shortcut-row"><span>Open .vnr file</span><span class="key"><kbd>Ctrl</kbd> + <kbd>O</kbd></span></div>
+    <div class="shortcut-row"><span>New note</span><span class="key"><kbd>Ctrl</kbd> + <kbd>N</kbd></span></div>
+    <div class="shortcut-row"><span>Toggle sidebar</span><span class="key"><kbd>Ctrl</kbd> + <kbd>B</kbd></span></div>
+    <div class="shortcut-row"><span>Switch to Write</span><span class="key"><kbd>Alt</kbd> + <kbd>1</kbd></span></div>
+    <div class="shortcut-row"><span>Open Script Reference</span><span class="key"><kbd>Ctrl</kbd> + <kbd>K</kbd></span></div>
+    <button class="btn close-modal" id="closeShortcutsModal">Close</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- STATS BAR -->
+<div class="stats-bar" style="display:flex; gap:12px; padding:4px 20px; border-top:1px solid var(--border); background:var(--surface); flex-shrink:0;">
+  <span id="charCount">0 characters</span>
+  <span id="wordCount">0 words</span>
+  <div class="save-status" style="margin-left:auto; display:flex; align-items:center; gap:4px;">
+    <span class="save-dot"></span>
+    <span id="saveLabel" style="font-size:10px; color:var(--text-dim);">Ready</span>
+  </div>
+</div>
+
+<script src="../js/mapping.js"></script>
+<script src="../js/translit-engine.js"></script>
+<script src="app.js"></script>
+<script src="../js/vnr.js"></script>
+</body>
+</html>

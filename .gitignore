@@ -1,0 +1,25 @@
+# Kimi project memory
+.kimi-memory/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Environment/config (if any are added later)
+.env
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
