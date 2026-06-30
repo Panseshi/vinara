@@ -1,9 +1,18 @@
 {
   "rewrites": [
     { "source": "/app", "destination": "/app/index.html" },
-    { "source": "/reference", "destination": "/reference/index.html" },
-    { "source": "/about", "destination": "/about/index.html" },
-    { "source": "/origins", "destination": "/origins/index.html" },
-    { "source": "/guide", "destination": "/guide/index.html" }
+    { "source": "/app/", "destination": "/app/index.html" },
+    { "source": "/about", "destination": "/pages/about.html" },
+    { "source": "/about/", "destination": "/pages/about.html" },
+    { "source": "/about.html", "destination": "/pages/about.html" },
+    { "source": "/origins", "destination": "/pages/origins.html" },
+    { "source": "/origins/", "destination": "/pages/origins.html" },
+    { "source": "/origins.html", "destination": "/pages/origins.html" },
+    { "source": "/guide", "destination": "/pages/guide.html" },
+    { "source": "/guide/", "destination": "/pages/guide.html" },
+    { "source": "/guide.html", "destination": "/pages/guide.html" },
+    { "source": "/reference", "destination": "/pages/reference.html" },
+    { "source": "/reference/", "destination": "/pages/reference.html" },
+    { "source": "/reference.html", "destination": "/pages/reference.html" }
   ]
 }

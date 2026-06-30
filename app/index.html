@@ -87,14 +87,14 @@
             <button class="btn" id="exportBtn">Export as Image</button>
           </div>
         </div>
-        <div class="editor-wrap" id="noNote" style="display:flex; align-items:center; justify-content:center;">
+        <div class="editor-wrap" id="noNote" style="display:none; align-items:center; justify-content:center;">
           <div style="text-align:center; color:var(--text-dim);">
             <div style="font-size:36px; margin-bottom:8px; font-family:'Vinara',serif;">vinara</div>
             <div style="font-size:13px;">Create a new note or open an existing one</div>
           </div>
         </div>
-        <div class="editor-wrap" id="editorView" style="display:none;">
-          <textarea id="editor" placeholder="Type your note…" spellcheck="false" class="vinara-font"></textarea>
+        <div class="editor-wrap" id="editorView" style="display:flex;">
+          <textarea id="editor" placeholder="type your note…" spellcheck="false" class="vinara-font"></textarea>
           <div id="latinView" style="display:none; flex-direction:column; flex:1;">
             <textarea id="latinEditor" placeholder="type in latin…" spellcheck="false" class="latin-editor"></textarea>
             <div class="vinara-preview-wrap">

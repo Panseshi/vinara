@@ -191,10 +191,14 @@
     notes = notes.filter(function(n) { return n.id !== id; });
     if (activeId === id) {
       activeId = null;
+      var editor = document.getElementById('editor');
+      if (editor) editor.value = '';
+      var meta = document.getElementById('editorMeta');
+      if (meta) meta.textContent = '';
       var noNote = document.getElementById('noNote');
-      if (noNote) noNote.style.display = 'flex';
+      if (noNote) noNote.style.display = 'none';
       var editorView = document.getElementById('editorView');
-      if (editorView) editorView.style.display = 'none';
+      if (editorView) editorView.style.display = 'flex';
     }
     persist();
     renderSidebar();
@@ -543,6 +547,10 @@
   function wireEvents() {
     var editor = document.getElementById('editor');
     if (editor) {
+      // Auto-create a new note when user clicks in empty editor
+      editor.addEventListener('focus', function() {
+        if (!activeId) { newNote(); }
+      });
       editor.addEventListener('keydown', function(e) {
         if (e.ctrlKey && e.key === 's') { e.preventDefault(); saveNoteAsVnr(); setSaveStatus('saved'); persist(); showToast('Saved'); return; }
         if (e.ctrlKey && e.key === 'e') { e.preventDefault(); exportNoteAsPng(); return; }
